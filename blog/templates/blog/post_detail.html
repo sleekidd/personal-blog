@@ -11,18 +11,19 @@
     <p>{{ post.text|linebreaksbr }}</p>
 </div> -->
 
-<header class="masthead" style="background-image: url('img/post-bg.jpg')">
+<header class="masthead"
+    style="background: url({{post.featured_image.url}}) no-repeat; background-size: cover;  background-position: center;">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="post-heading">
                     <h1>{{ post.title }}</h1>
-                    <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+                    <h2 class="subheading">{{ post.subtitle }}</h2>
                     <span class="meta">Posted by
-                        <a href="#">Start Bootstrap</a>
+                        <a href="#">{{ post.author }}</a>
                         {% if post.published_date %}
-                        on August 24, 2019</span>
+                        on {{ post.published_date }}</span>
                     {% endif %}
                 </div>
             </div>

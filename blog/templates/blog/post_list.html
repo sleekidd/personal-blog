@@ -28,11 +28,11 @@
                         {{ post.title }}
                     </h2>
                     <h3 class="post-subtitle">
-                        {{ post.text|linebreaksbr }}
+                        {{ post.subtitle|linebreaksbr }}
                     </h3>
                 </a>
                 <p class="post-meta">Posted by
-                    <a href="#">Start Bootstrap</a>
+                    <a href="#">{{ post.author }}</a>
                     {{ post.published_date }}</p>
             </div>
             <hr>
