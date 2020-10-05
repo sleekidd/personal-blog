@@ -1,3 +1,12 @@
 h1 a, h2 a {
     color: #FF8833;
 }
+
+.date span {
+    font-size: 16px;
+    font-weight: normal !important;
+}
+
+.btn-primary  {
+    margin-bottom: 50px !important;
+}

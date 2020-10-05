@@ -40,4 +40,30 @@
         </div>
     </div>
 </article>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <hr>
+                <a class="btn btn-primary" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+                <br>
+                {% for comment in post.comments.all %}
+                <div class="comment">
+                    <strong>{{ comment.author }}</strong><br>
+                    <span>{{ comment.text }}</span>
+                    <div class="date">
+                        <span>{{ comment.created_date }}</span>
+                    </div>
+                </div>
+                <hr>
+                {% empty %}
+                <p>No comments here yet :(</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
 {% endblock %}

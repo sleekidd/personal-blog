@@ -17,6 +17,7 @@
 
     <!-- Custom fonts for this template -->
     <link href="{% static 'css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
         type='text/css'>
     <link
@@ -65,7 +66,7 @@
                         <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="post.html">Sample Post</a>
+                        <a class="nav-link" href="{% url 'post_new' %}">New Post</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
