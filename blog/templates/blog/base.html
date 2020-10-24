@@ -63,13 +63,17 @@
                         <a class="nav-link" href="{% url 'post_list' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'post_new' %}">New Post</a>
                     </li>
+                    {% endif %}
+                    {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
             </div>

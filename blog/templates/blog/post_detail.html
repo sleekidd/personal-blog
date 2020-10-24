@@ -25,6 +25,10 @@
                         {% if post.published_date %}
                         on {{ post.published_date }}</span>
                     {% endif %}
+                    {% if user.is_superuser %}
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post_update' object.slug %}">Update</a>
+
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -46,23 +50,47 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <hr>
-                <a class="btn btn-primary" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
-                <br>
-                {% for comment in post.comments.all %}
-                <div class="comment">
-                    <strong>{{ comment.author }}</strong><br>
-                    <span>{{ comment.text }}</span>
-                    <div class="date">
-                        <span>{{ comment.created_date }}</span>
-                    </div>
+                <h2>Leave your comment!</h2>
+                <div id="comments_section">
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ comment_form.as_p }}
+                            <button class="btn btn-info" type="submit">Add comment <i
+                                    class="fas fa-comments"></i></button>
+                        </div>
+                    </form>
+
+                    {% if comments %}
+                    <strong class="text-secondary">{{ object.number_of_comments }}
+                        Comment{{ object.number_of_comments|pluralize }}</strong>
+                    <hr>
+                    <ul>
+                        {% for comment in comments %}
+                        <li>
+                            <div>
+                                <span>
+                                    <strong class="text-info">{{ comment.author }} </strong>
+                                    <small class="text-muted">{{ comment.created_date }}</small>
+                                </span>
+                                <p>
+                                    {{ comment.text|safe }}
+                                </p>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <strong class="text-secondary">No comments yet...</strong>
+                    {% endif %}
                 </div>
-                <hr>
-                {% empty %}
-                <p>No comments here yet :(</p>
-                {% endfor %}
             </div>
         </div>
-    </div>
+</section>
+
+<section>
+
 </section>
 
 
